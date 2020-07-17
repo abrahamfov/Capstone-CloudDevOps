@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('Lint Dockerfile'){
             steps {
-                sh 'hadolint Dockerfile'
+                sh 'hadolint --ignore DL3007 Dockerfile'
             }
         }
         stage ('Lint HMTL'){
