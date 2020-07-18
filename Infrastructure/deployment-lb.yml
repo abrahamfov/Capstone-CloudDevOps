@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: capstone-project-cloud-devops
+  name: aortiz-capstone
   labels:
-    app: capstone-project-cloud-devops
+    app: aortiz-capstone
   namespace: default
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: capstone-project-cloud-devops
+      app: aortiz-capstone
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -18,12 +18,12 @@ spec:
   template:
     metadata:
       labels:
-        app: capstone-project-cloud-devops
+        app: aortiz-capstone
     spec:
       containers:
         - image: abrahamfov/aortiz-capstone
           imagePullPolicy: Always
-          name: capstone-project-cloud-devops
+          name: aortiz-capstone
           ports:
             - containerPort: 80
 
@@ -31,13 +31,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: capstone-project-cloud-devops
+  name: aortiz-capstone
   labels:
-    app: capstone-project-cloud-devops
+    app: aortiz-capstone
 spec:
   type: LoadBalancer
   selector:
-    app: capstone-project-cloud-devops
+    app: aortiz-capstone
   ports:
     - port: 80
       targetPort: 80
