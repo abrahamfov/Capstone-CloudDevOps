@@ -14,8 +14,8 @@ pipeline {
         }
         stage ('Push docker image'){
             steps{
-                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
-                    sh "docker tag aortiz-capstone abrahamfov/aortiz-capstone"
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]){
+                    sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
                     sh 'docker push abrahamfov/aortiz-capstone'
                 }
             }
