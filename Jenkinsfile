@@ -20,5 +20,14 @@ pipeline {
                 }
             }
         }
+        stage ('Deploy container'){
+            steps{
+                sh 'aws eks --region eu-west-3 update-kubeconfig --name aortiz-capstone-EKS'
+  		        sh 'kubectl apply -f Infrastructure/aws-auth-cm.yaml'
+  		        sh 'kubectl apply -f deployment.yml'
+  		        sh 'kubectl get nodes'
+  		        sh 'kubectl get pods -o wide'
+            }
+        }
     }
 }
