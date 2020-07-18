@@ -9,7 +9,7 @@ pipeline {
         }
         stage ('Build docker image'){
             steps {
-                sh 'docker build -t aortiz-capstone'
+                sh 'docker build -t aortiz-capstone .'
             }
         }
         stage ('Push docker image'){
