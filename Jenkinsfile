@@ -26,7 +26,7 @@ pipeline {
                     sh 'aws eks --region eu-west-3 update-kubeconfig --name aortiz-capstone'
                     sh 'kubectl config use-context arn:aws:eks:eu-west-3:749371973534:cluster/aortiz-capstone'
                     sh 'kubectl set image deployments/aortiz-capstone aortiz-capstone=abrahamfov/aortiz-capstone:latest'
-                    sh 'kubectl apply -f deployment-lb.yml'
+                    sh 'kubectl apply -f Infrastructure/deployment-lb.yml'
                     sh 'kubectl get nodes'
                     sh 'kubectl get deployment'
                     sh 'kubectl get pods -o wide'
