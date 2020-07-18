@@ -31,6 +31,7 @@ pipeline {
                     sh 'kubectl get deployment'
                     sh 'kubectl get pods -o wide'
                     sh 'kubectl get service/aortiz-capstone'
+                    sh 'kubectl rollout status deployment aortiz-capstone'
                 }
             }
         }
