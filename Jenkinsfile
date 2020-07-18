@@ -14,7 +14,7 @@ pipeline {
         }
         stage ('Push docker image'){
             steps{
-                withDockerRegistry([url:"",credentialsId:"dockerhub"]){
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
                     sh "docker tag aortiz-capstone abrahamfov/aortiz-capstone"
                     sh 'docker push abrahamfov/aortiz-capstone'
                 }
