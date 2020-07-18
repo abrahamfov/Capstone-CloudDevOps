@@ -28,6 +28,7 @@ pipeline {
   		        sh 'kubectl apply -f deployment.yml'
   		        sh 'kubectl get nodes'
   		        sh 'kubectl get pods -o wide'
+                }
             }
         }
     }
